@@ -62,7 +62,7 @@ private Vector<BackGroundInterface> listener = new Vector<BackGroundInterface>()
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void startAlt() {
+	public void startAlt(String data) {
 		Vector<BackGroundInterface> copy;
 		
 		synchronized(this) {
@@ -72,7 +72,7 @@ private Vector<BackGroundInterface> listener = new Vector<BackGroundInterface>()
 		for(int i = 0; i < copy.size(); i++) {
 			BackGroundInterface listenerCopy = (BackGroundInterface) copy.elementAt(i);
 			StartAltObjectEvenet newEvent = new StartAltObjectEvenet(this);
-			listenerCopy.startAlt(newEvent);
+			listenerCopy.startAlt(newEvent,data);
 		}
 		
 	}
@@ -129,7 +129,7 @@ private Vector<BackGroundInterface> listener = new Vector<BackGroundInterface>()
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void startPressure() {
+	public void startPressure(String data) {
 		Vector<BackGroundInterface> copy;
 		
 		synchronized(this) {
@@ -139,7 +139,7 @@ private Vector<BackGroundInterface> listener = new Vector<BackGroundInterface>()
 		for(int i = 0; i < copy.size(); i++) {
 			BackGroundInterface listenerCopy = (BackGroundInterface) copy.elementAt(i);
 			StartPressureObjectEvent newEvent = new StartPressureObjectEvent(this);
-			listenerCopy.startPressure(newEvent);
+			listenerCopy.startPressure(newEvent, data);
 		}
 		
 	}
@@ -255,7 +255,22 @@ private Vector<BackGroundInterface> listener = new Vector<BackGroundInterface>()
 		}
 		
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	public void startAltStream() {
+		Vector<BackGroundInterface> copy;
+		
+		synchronized(this) {
+			copy = (Vector<BackGroundInterface>) listener.clone();
+		}
+		
+		for(int i = 0; i < copy.size(); i++) {
+			BackGroundInterface listenerCopy = (BackGroundInterface) copy.elementAt(i);
+			AltStreamObject newEvent = new AltStreamObject(this);
+			listenerCopy.startAltStream(newEvent);
+		}
+		
+	}
 	
 	
 	

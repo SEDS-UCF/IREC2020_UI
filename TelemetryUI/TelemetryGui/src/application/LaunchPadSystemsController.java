@@ -1,8 +1,11 @@
 package application;
 
+import java.net.*;
+import java.io.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
@@ -11,6 +14,7 @@ import com.sun.javafx.geom.Rectangle;
 import com.sun.prism.paint.Color;
 
 import Interface.AbortLaunchObjectEvent;
+import Interface.AltStreamObject;
 import Interface.ArmRocketObjectEvent;
 import Interface.BackGroundController;
 import Interface.BackGroundInterface;
@@ -55,6 +59,9 @@ public class LaunchPadSystemsController implements BackGroundInterface {
 	
 	@FXML
 	private  Polygon sol1;
+	
+	@FXML
+	private AnchorPane camera1Feed; 
 	
 	@FXML
 	private  Line centerFillLine;
@@ -172,6 +179,12 @@ public class LaunchPadSystemsController implements BackGroundInterface {
 		
 	}
 	
+	
+	public void camera1On() {
+	
+		
+	}
+	
 
 	public void setWifiStrength() {
 		
@@ -198,7 +211,7 @@ public class LaunchPadSystemsController implements BackGroundInterface {
 	}
 
 	@Override
-	public void startAlt(StartAltObjectEvenet e) {
+	public void startAlt(StartAltObjectEvenet e, String data) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -222,7 +235,7 @@ public class LaunchPadSystemsController implements BackGroundInterface {
 	}
 
 	@Override
-	public void startPressure(StartPressureObjectEvent e) {
+	public void startPressure(StartPressureObjectEvent e, String data) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -267,6 +280,12 @@ public class LaunchPadSystemsController implements BackGroundInterface {
 
 	@Override
 	public void purgeValveClosed(PurgeValveClosedObjectEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void startAltStream(AltStreamObject e) {
 		// TODO Auto-generated method stub
 		
 	}

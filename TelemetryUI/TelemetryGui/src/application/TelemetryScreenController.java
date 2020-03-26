@@ -3,6 +3,7 @@ package application;
 import java.awt.Color;
 
 import Interface.AbortLaunchObjectEvent;
+import Interface.AltStreamObject;
 import Interface.ArmRocketObjectEvent;
 import Interface.BackGroundController;
 import Interface.BackGroundInterface;
@@ -21,36 +22,82 @@ import Interface.StopOrientationObjectEvent;
 import Interface.StopPressureObjectEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import java.util.*;
 
 public class TelemetryScreenController implements BackGroundInterface{
 
 	BackGroundController controller = null;
 	
 	@FXML
-	private Label telemetryStatusLabel;
+	private Label telemetryStatus; // change this based on thread health
+	@FXML
+	private Label rssiLabel; // change based on current RSSI
 	@FXML
 	private Pane altPane;
 	@FXML
-	private Label rssiLabel;
-	@FXML
 	private Label portStatus;
 	@FXML
-	private StackPane stackPane;
+	private TextArea altTextArea;
+	@FXML
+	private TextArea pressureTextArea;
+	@FXML
+	private TextArea orientationTextArea;
+	@FXML
+	private TextArea graphTextArea;
+	
+	private StringBuilder altString = null;
 	
 	public void setController(BackGroundController controller) {
+
+		altString = new StringBuilder();
+		
 		this.controller = controller;
+		
+		graphTextArea.setEditable(false);
+		graphTextArea.setStyle("-fx-control-inner-background:#000000; -fx-font-family: System; -fx-highlight-fill: #00ff00; -fx-highlight-text-fill: #000000; -fx-text-fill: #00ff00; ");
+		
+		pressureTextArea.setEditable(false);
+		pressureTextArea.setStyle("-fx-control-inner-background:#000000; -fx-font-family: System; -fx-highlight-fill: #00ff00; -fx-highlight-text-fill: #000000; -fx-text-fill: #00ff00; ");
+		
+		orientationTextArea.setEditable(false);
+		orientationTextArea.setStyle("-fx-control-inner-background:#000000; -fx-font-family: System; -fx-highlight-fill: #00ff00; -fx-highlight-text-fill: #000000; -fx-text-fill: #00ff00; ");
+		
+		altTextArea.setEditable(false);
+		altTextArea.setStyle("-fx-control-inner-background:#000000; -fx-font-family: System; -fx-highlight-fill: #00ff00; -fx-highlight-text-fill: #000000; -fx-text-fill: #00ff00; ");
+	}
+	
+	
+	public void displayAltData(String data) {
+
+		altTextArea.appendText(data);
+	
+	}
+	
+	public void displayPressureData(String data) {
+		pressureTextArea.appendText("9.25\n");
+		
+	}
+	
+	public void displayGraphData() {
+		//work this out
+		
+	}
+	
+	public void displayOrientationData() {
+		//work this out as well
 	}
 	
 	@FXML
 	public void telemetryStatusNominal() {
-		telemetryStatusLabel.setStyle("-fx-background-color: red;");
+		//telemetryStatusLabel.setStyle("-fx-background-color: red;");
 	
 	}
 	@FXML
 	public void telemetryStatusOffline() {
-		telemetryStatusLabel.setStyle("-fx-background-color: red;");
+		//telemetryStatusLabel.setStyle("-fx-background-color: red;");
 		
 	}
 	
@@ -88,8 +135,8 @@ public class TelemetryScreenController implements BackGroundInterface{
 		
 	}
 	@Override
-	public void startAlt(StartAltObjectEvenet e) {
-		// TODO Auto-generated method stub
+	public void startAlt(StartAltObjectEvenet e, String data) {
+		displayAltData(data);
 		
 	}
 	@Override
@@ -108,8 +155,9 @@ public class TelemetryScreenController implements BackGroundInterface{
 		
 	}
 	@Override
-	public void startPressure(StartPressureObjectEvent e) {
+	public void startPressure(StartPressureObjectEvent e, String data) {
 		// TODO Auto-generated method stub
+		displayPressureData(data);
 		
 	}
 	@Override
@@ -144,6 +192,13 @@ public class TelemetryScreenController implements BackGroundInterface{
 	}
 	@Override
 	public void purgeValveClosed(PurgeValveClosedObjectEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void startAltStream(AltStreamObject e) {
 		// TODO Auto-generated method stub
 		
 	}

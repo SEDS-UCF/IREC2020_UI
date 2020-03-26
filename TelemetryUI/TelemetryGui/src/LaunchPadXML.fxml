@@ -35,7 +35,7 @@
          <children>
             <TitledPane alignment="CENTER" animated="false" prefHeight="765.0" prefWidth="597.0" text="Camera 1 Feed">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane fx:id="camera1Feed" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
                <font>
                   <Font name="Cooper Black" size="14.0" />

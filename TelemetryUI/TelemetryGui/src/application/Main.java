@@ -1,7 +1,6 @@
 package application;
 	
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -9,6 +8,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
+
+
+/*
+ * TO-DO
+ * 
+ * Construct Controller to handle wifi network and data delegation
+ * Construct Controller to handle RF data and delegation of data
+ *  
+ *  Add Field for GSE/RF ports
+ * 	Add button that is triggered by network unreachable or connected in Systems Control Panel
+ * 
+ * 
+ * 
+ * 
+ */
 
 public class Main extends Application {
 	@Override
@@ -33,12 +47,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	public void whatsup() {
-		System.out.println("SUp");
-	}
-		
-	
+			
 }
 
 
